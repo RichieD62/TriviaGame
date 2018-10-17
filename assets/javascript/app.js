@@ -23,30 +23,30 @@ var questions = {
     q7: "True or False: Virtually all Las Vegas Casinos ensure that there are no visible clocks" //true
 };
 var questionArr = [questions.q1, questions.q2, questions.q3, questions.q4, questions.q5, questions.q6, questions.q7,];
-var timer = 8;
+var timer = 13;
 var intervalId;
-var answer;
-
+var answer = "";
+var letter;
+ 
 
 //Game Start
 $(document).ready(function(){
 
-//Keyup Event Listener
-$(document).keyup(function(event) {
-    letter = String.fromCharCode(event.keyCode);
-    console.log(letter);
-});
+//Right and Wrong
 
-//True and False Definitions
-function trueFalse(){
-    if (letter = "t"){
-        answer = "true";
-        console.log(answer);
-    } else if (letter = "f"){
-        answer = "false";
-        console.log(answer);
+    function right() {
+        alert("Correct! Nice Job");
+        answersRight++;
+        stop();
+        answer = "right";
     }
-};
+
+    function wrong() {
+        alert("Incorrect! Nice try");
+        answersWrong++;
+        stop();
+        answer = "wrong"
+    }
 
 //Count down timer
     function timeDown() {
@@ -67,125 +67,165 @@ function trueFalse(){
         clearInterval(intervalId);
     }
 
-
+    function resetTimer() {
+        timer = 13;
+        timeDown();
+        decrement();
+    }
 
 //Ask questions
     function askQuestion1() {
+        resetTimer();
         $(".questionDiv").html(questions.q1);
-        trueFalse();
-        if (answer == "true") {
-            alert("Correct! Nice Job");
-            answersRight++;
-            stop();
-            setTimeout(askQuestion2, 3000);
-        } else if (answer == "false") {
-            alert("Incorrect! Nice try");
-            answersWrong++;
-            stop();
-            setTimeout(askQuestion2, 3000);
-        }
-    }
+            $(document).keyup(function(event) {
+                if (event.keyCode == 84 || 70) {
+                    if (event.keyCode == 84){
+                        right();
+                        setTimeout(askQuestion2, 3000);
+                    } else if (event.keyCode == 70){
+                        wrong();
+                        setTimeout(askQuestion2, 3000);
+                    } else {
+                    alert("That is not an answer!");
+                    }
+                }   
+            })
+            if (timer == 0){
+                setTimeout(askQuestion2, 3000);
+            };
+        };
+        
 
-    function askQuestion2() {
+function askQuestion2() { //Starting at Question 2 I am starting to get double answers (right or wrong)
         $(".questionDiv").html(questions.q2);
-        trueFalse();
-        if (answer == "true") {
-            alert("Correct! Nice Job");
-            answersRight++;
-            stop();
-            setTimeout(askQuestion3, 3000);
-        } else if (answer == "false") {
-            alert("Incorrect! Nice try");
-            answersWrong++;
-            stop();
-            setTimeout(askQuestion3, 3000);
-        }
-    }
+        resetTimer();
+            $(document).keyup(function(event) {
+                if (event.keyCode == 84 || 70) {
+                    if (event.keyCode == 84){
+                        right();
+                        setTimeout(askQuestion3, 3000);
+                    } else if (event.keyCode == 70){
+                        wrong();
+                        setTimeout(askQuestion3, 3000);
+                    } else {
+                    alert("That is not an answer!");
+                    }
+                }   
+            })
+            if (timer == 0){
+                setTimeout(askQuestion3, 3000);
+            };
+        };
+        
 
-    function askQuestion3() {
+    function askQuestion3() { //Starting at question 3, the seconds are going by twice as fast and I get 3 incorrect answers before the correct answer
         $(".questionDiv").html(questions.q3);
-        trueFalse();
-        if (answer == "false") {
-            alert("Correct! Nice Job");
-            answersRight++;
-            stop();
-            setTimeout(askQuestion4, 3000);
-        } else if (answer == "true") {
-            alert("Incorrect! Nice try");
-            answersWrong++;
-            stop();
-            setTimeout(askQuestion4, 3000);
-        }
-    }
+        resetTimer();
+            $(document).keyup(function(event) {
+                if (event.keyCode == 84 || 70) {
+                    if (event.keyCode == 70){
+                        right();
+                        setTimeout(askQuestion4, 3000);
+                    } else if (event.keyCode == 84){
+                        wrong();
+                        setTimeout(askQuestion4, 3000);
+                    } else {
+                    alert("That is not an answer!");
+                    }
+                }   
+            })
+            if (timer == 0){
+                setTimeout(askQuestion4, 3000);
+            };
+        };
 
-    function askQuestion4() {
+    function askQuestion4() { //The game speeds up so exponentially fast that it is unplayable.
         $(".questionDiv").html(questions.q4);
-        trueFalse();
-        if (answer == "true") {
-            alert("Correct! Nice Job");
-            answersRight++;
-            stop();
-            setTimeout(askQuestion5, 3000);
-        } else if (answer == "false") {
-            alert("Incorrect! Nice try");
-            answersWrong++;
-            stop();
-            setTimeout(askQuestion5, 3000);
-        }
-    }
+        resetTimer();
+            $(document).keyup(function(event) {
+                if (event.keyCode == 84 || 70) {
+                    if (event.keyCode == 84){
+                        right();
+                        setTimeout(askQuestion5, 3000);
+                    } else if (event.keyCode == 70){
+                        wrong();
+                        setTimeout(askQuestion5, 3000);
+                    } else {
+                    alert("That is not an answer!");
+                    }
+                }   
+            })
+            if (timer == 0){
+                setTimeout(askQuestion5, 3000);
+            };
+        };
 
     function askQuestion5() {
         $(".questionDiv").html(questions.q5);
-        trueFalse();
-        if (answer == "true") {
-            alert("Correct! Nice Job");
-            answersRight++;
-            stop();
-            setTimeout(askQuestion6, 3000);
-        } else if (answer == "false") {
-            alert("Incorrect! Nice try");
-            answersWrong++;
-            stop();
-            setTimeout(askQuestion6, 3000);
-        }
-    }
+        resetTimer();
+            $(document).keyup(function(event) {
+                if (event.keyCode == 84 || 70) {
+                    if (event.keyCode == 84){
+                        right();
+                        setTimeout(askQuestion6, 3000);
+                    } else if (event.keyCode == 70){
+                        wrong();
+                        setTimeout(askQuestion6, 3000);
+                    } else {
+                    alert("That is not an answer!");
+                    }
+                }   
+            })
+            if (timer == 0){
+                setTimeout(askQuestion6, 3000);
+            };
+        };
 
     function askQuestion6() {
         $(".questionDiv").html(questions.q6);
-        trueFalse();
-        if (answer == "false") {
-            alert("Correct! Nice Job");
-            answersRight++;
-            stop();
-            setTimeout(askQuestion7, 3000);
-        } else if (answer == "true") {
-            alert("Incorrect! Nice try");
-            answersWrong++;
-            stop();
-            setTimeout(askQuestion7, 3000);
-        }
-    }
+        resetTimer();
+            $(document).keyup(function(event) {
+                if (event.keyCode == 84 || 70) {
+                    if (event.keyCode == 70){
+                        right();
+                        setTimeout(askQuestion7, 3000);
+                    } else if (event.keyCode == 84){
+                        wrong();
+                        setTimeout(askQuestion7, 3000);
+                    } else {
+                    alert("That is not an answer!");
+                    }
+                }   
+            })
+            if (timer == 0){
+                setTimeout(askQuestion7, 3000);
+            };
+        };
 
     function askQuestion7() {
         $(".questionDiv").html(questions.q7);
-        trueFalse();
-        if (answer == "true") {
-            alert("Correct! Nice Job");
-            answersRight++;
-            stop();
-            //setTimeout(ResultsPage, 3000);
-        } else if (answer == "false") {
-            alert("Incorrect! Nice try");
-            answersWrong++;
-            stop();
-            //setTimeout(ResultsPage, 3000);
-        }
-    }
+        resetTimer();
+            $(document).keyup(function(event) {
+                if (event.keyCode == 84 || 70) {
+                    if (event.keyCode == 84){
+                        right();
+                        //Show final answer screen
+                    } else if (event.keyCode == 70){
+                        wrong();
+                        //Show final answer screen
+                    } else {
+                    alert("That is not an answer!");
+                    }
+                }   
+            })
+            if (timer == 0){
+            //Show final answer screen
+            };
+        };
 
-  timeDown();
-  askQuestion1();
+
+askQuestion1();
 
 });
-
 
 
