@@ -28,8 +28,7 @@ var intervalId;
 var answer = "";
 var letter;
 var currentQuestion;
-var askQuestionsArr = [askQuestion1(), askQuestion2(), askQuestion3(), askQuestion4(), askQuestion5(), askQuestion6(), askQuestion7()]
-var currentQuestionAsked = askQuestionsArr[0];
+
 
 
 //Game Start
@@ -79,8 +78,6 @@ $(document).ready(function(){
                 alert("Correct! Nice Job");
                 answersRight++;
                 stop();
-                currentQuestionAsked = askQuestionsArr++;
-                setInterval(currentQuestionAsked, 3000);
                 answer = "right";
             } else if (event.keyCode == 70){
                 alert("Incorrect! Nice try");
@@ -142,6 +139,7 @@ function resetTimer() {
         currentQuestion = questionArr[0];    
         resetTimer();
         $(".questionDiv").html(questions.q1);
+        setTimeout(askQuestion2, 3000);
         };   
         
         
