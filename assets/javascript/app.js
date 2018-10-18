@@ -27,202 +27,182 @@ var timer = 13;
 var intervalId;
 var answer = "";
 var letter;
- 
+var currentQuestion;
+var askQuestionsArr = [askQuestion1(), askQuestion2(), askQuestion3(), askQuestion4(), askQuestion5(), askQuestion6(), askQuestion7()]
+var currentQuestionAsked = askQuestionsArr[0];
+
 
 //Game Start
 $(document).ready(function(){
 
-//Right and Wrong
+    // function trueCorrect(event) {
+    //     if (event.keyCode == 84 || 70) {
+    //         if (event.keyCode == 84){
+    //             alert("Correct! Nice Job");
+    //             answersRight++;
+    //             stop();
+    //             answer = "right";
+    //         } else if (event.keyCode == 70){
+    //             alert("Incorrect! Nice try");
+    //             answersWrong++;
+    //             stop();
+    //             answer = "wrong"
+    //         } else {
+    //         alert("That is not an answer!");
+    //         }
+    //     }
+    // }
 
-    function right() {
-        alert("Correct! Nice Job");
-        answersRight++;
-        stop();
-        answer = "right";
-    }
+    // function falseCorrect(event) {
+    //     if (event.keyCode == 84 || 70) {
+    //         if (event.keyCode == 70){
+    //             alert("Correct! Nice Job");
+    //             answersRight++;
+    //             stop();
+    //             answer = "right";
+    //         } else if (event.keyCode == 84){
+    //             alert("Incorrect! Nice try");
+    //             answersWrong++;
+    //             stop();
+    //             answer = "wrong"
+    //         } else {
+    //         alert("That is not an answer!");
+    //         }
+    //     }
+    // }
 
-    function wrong() {
-        alert("Incorrect! Nice try");
-        answersWrong++;
-        stop();
-        answer = "wrong"
-    }
+//onkeyup functions - have all of the checking logic in one function
+ $(document).keyup(function(event) {
+     if (currentQuestion == questionArr[0], questionArr[1], questionArr[3], questionArr[4], questionArr[6]) {
+        if (event.keyCode == 84 || 70) {
+            if (event.keyCode == 84){
+                alert("Correct! Nice Job");
+                answersRight++;
+                stop();
+                currentQuestionAsked = askQuestionsArr++;
+                setInterval(currentQuestionAsked, 3000);
+                answer = "right";
+            } else if (event.keyCode == 70){
+                alert("Incorrect! Nice try");
+                answersWrong++;
+                stop();
+                answer = "wrong"
+            } else {
+            alert("That is not an answer!");
+            }
+        }
+     } else if (currentQuestion == questionArr[2], questionArr[5]){
+        if (event.keyCode == 84 || 70) {
+            if (event.keyCode == 70){
+                alert("Correct! Nice Job");
+                answersRight++;
+                stop();
+                answer = "right";
+            } else if (event.keyCode == 84){
+                alert("Incorrect! Nice try");
+                answersWrong++;
+                stop();
+                answer = "wrong"
+            } else {
+            alert("That is not an answer!");
+            }
+        }
+     }
+    
+});
+
 
 //Count down timer
-    function timeDown() {
-        intervalId = setInterval(decrement, 1000);
-    }
+function timeDown() {
+    intervalId = setInterval(decrement, 1000);
+}
 
-    function decrement() {
-        timer--;
-        $(".timeRemainingDiv").html("<h4>Time Remaining: " + timer + "</h4>");
-        if (timer == 0){
-            stop();
-            alert("time is up!");
-            answersWrong++;
-        }
+function decrement() {
+    timer--;
+    $(".timeRemainingDiv").html("<h4>Time Remaining: " + timer + "</h4>");
+    if (timer == 0){
+        stop();
+        alert("time is up!");
+        answersWrong++;
     }
+}
 
-    function stop() {
-        clearInterval(intervalId);
-    }
+function stop() {
+    clearInterval(intervalId);
+}
 
-    function resetTimer() {
-        timer = 13;
-        timeDown();
-        decrement();
-    }
+function resetTimer() {
+    timer = 13;
+    timeDown();
+    decrement();
+}
 
 //Ask questions
     function askQuestion1() {
+        currentQuestion = questionArr[0];    
         resetTimer();
         $(".questionDiv").html(questions.q1);
-            $(document).keyup(function(event) {
-                if (event.keyCode == 84 || 70) {
-                    if (event.keyCode == 84){
-                        right();
-                        setTimeout(askQuestion2, 3000);
-                    } else if (event.keyCode == 70){
-                        wrong();
-                        setTimeout(askQuestion2, 3000);
-                    } else {
-                    alert("That is not an answer!");
-                    }
-                }   
-            })
-            if (timer == 0){
-                setTimeout(askQuestion2, 3000);
-            };
-        };
+        };   
+        
         
 
-function askQuestion2() { //Starting at Question 2 I am starting to get double answers (right or wrong)
+function askQuestion2() { 
+        currentQuestion = questionArr[1];    
+        resetTimer();
         $(".questionDiv").html(questions.q2);
-        resetTimer();
-            $(document).keyup(function(event) {
-                if (event.keyCode == 84 || 70) {
-                    if (event.keyCode == 84){
-                        right();
-                        setTimeout(askQuestion3, 3000);
-                    } else if (event.keyCode == 70){
-                        wrong();
-                        setTimeout(askQuestion3, 3000);
-                    } else {
-                    alert("That is not an answer!");
-                    }
-                }   
-            })
-            if (timer == 0){
-                setTimeout(askQuestion3, 3000);
-            };
+        document.onkeyup = null;
+        setTimeout(askQuestion3, 3000);
         };
         
 
-    function askQuestion3() { //Starting at question 3, the seconds are going by twice as fast and I get 3 incorrect answers before the correct answer
-        $(".questionDiv").html(questions.q3);
-        resetTimer();
-            $(document).keyup(function(event) {
-                if (event.keyCode == 84 || 70) {
-                    if (event.keyCode == 70){
-                        right();
-                        setTimeout(askQuestion4, 3000);
-                    } else if (event.keyCode == 84){
-                        wrong();
-                        setTimeout(askQuestion4, 3000);
-                    } else {
-                    alert("That is not an answer!");
-                    }
-                }   
-            })
-            if (timer == 0){
-                setTimeout(askQuestion4, 3000);
-            };
-        };
+        
 
-    function askQuestion4() { //The game speeds up so exponentially fast that it is unplayable.
-        $(".questionDiv").html(questions.q4);
+    function askQuestion3() { 
+        currentQuestion = questionArr[2];    
         resetTimer();
-            $(document).keyup(function(event) {
-                if (event.keyCode == 84 || 70) {
-                    if (event.keyCode == 84){
-                        right();
-                        setTimeout(askQuestion5, 3000);
-                    } else if (event.keyCode == 70){
-                        wrong();
-                        setTimeout(askQuestion5, 3000);
-                    } else {
-                    alert("That is not an answer!");
-                    }
-                }   
-            })
-            if (timer == 0){
-                setTimeout(askQuestion5, 3000);
-            };
+        $(".questionDiv").html(questions.q3);
+        document.onkeyup = null;
+        setTimeout(askQuestion4, 3000);
         };
+        
+        
+
+    function askQuestion4() { 
+        currentQuestion = questionArr[3];    
+        resetTimer();
+        $(".questionDiv").html(questions.q4);
+        document.onkeyup = null;
+        setTimeout(askQuestion5, 3000);
+        };
+       
 
     function askQuestion5() {
-        $(".questionDiv").html(questions.q5);
+        currentQuestion = questionArr[4];    
         resetTimer();
-            $(document).keyup(function(event) {
-                if (event.keyCode == 84 || 70) {
-                    if (event.keyCode == 84){
-                        right();
-                        setTimeout(askQuestion6, 3000);
-                    } else if (event.keyCode == 70){
-                        wrong();
-                        setTimeout(askQuestion6, 3000);
-                    } else {
-                    alert("That is not an answer!");
-                    }
-                }   
-            })
-            if (timer == 0){
-                setTimeout(askQuestion6, 3000);
-            };
+        $(".questionDiv").html(questions.q5);
+        document.onkeyup = null;
+        setTimeout(askQuestion6, 3000);
         };
+        
 
     function askQuestion6() {
-        $(".questionDiv").html(questions.q6);
+        currentQuestion = questionArr[5];    
         resetTimer();
-            $(document).keyup(function(event) {
-                if (event.keyCode == 84 || 70) {
-                    if (event.keyCode == 70){
-                        right();
-                        setTimeout(askQuestion7, 3000);
-                    } else if (event.keyCode == 84){
-                        wrong();
-                        setTimeout(askQuestion7, 3000);
-                    } else {
-                    alert("That is not an answer!");
-                    }
-                }   
-            })
-            if (timer == 0){
-                setTimeout(askQuestion7, 3000);
-            };
-        };
+        $(".questionDiv").html(questions.q6);
+        document.onkeyup = null;
+        setTimeout(askQuestion7, 3000);
+        };   
+        
+    
 
     function askQuestion7() {
-        $(".questionDiv").html(questions.q7);
+        currentQuestion = questionArr[6];    
         resetTimer();
-            $(document).keyup(function(event) {
-                if (event.keyCode == 84 || 70) {
-                    if (event.keyCode == 84){
-                        right();
-                        //Show final answer screen
-                    } else if (event.keyCode == 70){
-                        wrong();
-                        //Show final answer screen
-                    } else {
-                    alert("That is not an answer!");
-                    }
-                }   
-            })
-            if (timer == 0){
-            //Show final answer screen
-            };
+        $(".questionDiv").html(questions.q7);
+        document.onkeyup = null;
+        setTimeout(askQuestion6, 3000);
         };
-
+        
 
 askQuestion1();
 
