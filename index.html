@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
 
-    <title>Trivia Game!</title>
+    <title>Random Questions Quiz!</title>
     <meta charset="UCF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -29,7 +29,18 @@
                 <p> </p>
             </div>
             <div class = "col-md-8">
-                <h2 class = "triviaHeadingDiv">TRIVIA!</h2>
+                <h2 class = "triviaHeadingDiv">Random Question Quiz!</h2>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class = "col-md-2">
+                <p> </p>
+            </div>
+            <div class = "col-md-8">
+                <p>You have 60 seconds to complete this quiz. There are 7 questions which means that you have approimately 6.428 seconds to read and answer each question that is on the page. On top of that, I bet you have alreay wasted a couple of seconds just to get to this point. The timer has been running the whole time. You should start the quiz before time runs out!</p>
             </div>
         </div>
     </div>
@@ -40,11 +51,11 @@
     <!--Time Remaining Div-->
     <div class="container">
         <div class="row">
-            <div class = "col-md-3">
+            <div class = "col-md-4">
                 <p> </p>
             </div>
-            <div class = "col-md-6">
-                <h4 class = "timeRemainingDiv">Time Remaining: 12</h4>
+            <div class = "col-md-4">
+                <h4 class = "timeRemainingDiv">Time Remaining: 60</h4>
             </div>
         </div>
     </div>
@@ -53,13 +64,103 @@
 <br>
 
     <!--Question Div-->
-    <div class="container">
+    <form id ="quiz" name = "quiz">
+    <div class="container" id = "mainForm">
         <div class="row">
             <div class = "col-md-2">
                 <p> </p>
             </div>
             <div class = "col-md-8">
-                <h4 class = "questionDiv"></h4>
+                <h4 class = "questionOne">1.) Approximately one quarter of human bones are in the feet</h4>
+                <input type = "radio" class = "trueValue" name = "question1" value = "true"> True <br>
+                <input type = "radio" class = "falseValue" name = "question1" value = "false"> False <br> 
+            </div>
+        </div>
+        <div class="row">
+            <div class = "col-md-2">
+                <p> </p>
+            </div>
+            <div class = "col-md-8">
+                <h4 class = "questionTwo">2.) Popeye has four nephews named Peepeye, Poopeye, Pipeye, and Pupeye</h4>
+                <input type = "radio" class = "trueValue" name = "question2" value = "true"> True <br>
+                <input type = "radio" class = "falseValue" name = "question2" value = "false"> False <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class = "col-md-2">
+                <p> </p>
+            </div>
+            <div class = "col-md-8">
+                <h4 class = "questionThree">3.) In ancient Rome, a special room called a vomitorium was available for diners to purge food during and after meals</h4>
+                <input type = "radio" class = "trueValue" name = "question3" value = "true"> True <br>
+                <input type = "radio" class = "falseValue" name = "question3" value = "false"> False <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class = "col-md-2">
+                <p> </p>
+            </div>
+            <div class = "col-md-8">
+                <h4 class = "questionFour">4.) The average person will shed approximately 40 pounds of skin during their lifetime</h4>
+                <input type = "radio" class = "trueValue" name = "question4" value = "true"> True <br>
+                <input type = "radio" class = "falseValue" name = "question4" value = "false"> False <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class = "col-md-2">
+                <p> </p>
+            </div>
+            <div class = "col-md-8">
+                <h4 class = "questionFive">5.) Sneezes regularly exceed 100 mph</h4>
+                <input type = "radio" class = "trueValue" name = "question5" value = "true"> True <br>
+                <input type = "radio" class = "falseValue" name = "question5" value = "false"> False <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class = "col-md-2">
+                <p> </p>
+            </div>
+            <div class = "col-md-8">
+                <h4 class = "questionFive">6.) The Great Wall of China is visible from the moon</h4>
+                <input type = "radio" class = "trueValue" name = "question6" value = "true"> True <br>
+                <input type = "radio" class = "falseValue" name = "question6" value = "false"> False <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class = "col-md-2">
+                <p> </p>
+            </div>
+            <div class = "col-md-10">
+                <h4 class = "questionFive">7.) Virtually all Las Vegas Casinos ensure that there are no visible clocks</h4>
+                <input type = "radio" class = "trueValue" name = "question7" value = "true"> True <br>
+                <input type = "radio" class = "falseValue" name = "question7" value = "false"> False <br>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class = "col-md-5">
+                <p> </p>
+            </div>
+            <div class = "col-md-2">
+                <input type = "button" id = "button" value = "Finish!" onclick = "check();"> 
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+
+    <div class = "container" id = "afterSubmit">
+        <div class = "row">
+            <div class = "col-md-4">
+                <p>  </p>
+            </div>
+            <div class = "col-md-3">
+                <p id = "numCorrect"></p>
+            </div>
+            <div class = "col-md-3">
+                <p id = "numWrong"></p>
             </div>
         </div>
     </div>

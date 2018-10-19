@@ -13,24 +13,25 @@ body{
 
 .timeRemainingDiv{
     text-align: center;
+    background-color: teal;
 }
 
 .questionDiv{
     text-align: center;
 }
 
-.answerOneDiv {
+#afterSubmit {
+    visibility: hidden;
+    font-size: 30px;
+    margin-left: 65px;
+}
+
+#numCorrect{
+    background-color: teal;
     text-align: center;
 }
 
-.answerTwoDiv {
-    text-align: center;
-}
-
-.answerThreeDiv {
-    text-align: center;
-}
-
-.answerFourDiv {
+#numWrong{
+    background-color: teal;
     text-align: center;
 }
